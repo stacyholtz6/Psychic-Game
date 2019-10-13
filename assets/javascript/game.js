@@ -31,26 +31,24 @@ document.onkeyup = function (event) {
 		// if we choose the same as the computer add 1 to wins
 		if ((userGuess === computerGuess)) {
 			wins++;
-			computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 			guessesLeft = 9;
 			guesses = [];
-		} else {
-			guessesLeft--;
-			if (guessesLeft === 0) {
-				alert("You're out of guesses!!!");
-				losses++
-				computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-				guessesLeft = 9;
-				guesses = [];
-
-			}
 		}
+		if ((userGuess !== computerGuess)) {
+			losses++;
+			guessesLeft--;
+		}
+		if (guessesLeft === 0) {
+			alert("GAME OVER!!!");
+		}
+
+
 		// show user and computer choices, and wins/losses/guesses left/ guesses so far
 		userChoiceText.textContent = "You chose: " + userGuess;
 		computerChoiceText.textContent = "The computer chose: " + computerGuess;
 		winsText.textContent = "wins: " + wins;
 		lossesText.textContent = "losses: " + losses;
-		guessesLeft.textContent = "guesses left: " + guessesLeft;
+		guessesLeftText.textContent = "guesses left: " + guessesLeft;
 		guessesText.textContent = "Guesses so far: " + guesses;
 	}
 
